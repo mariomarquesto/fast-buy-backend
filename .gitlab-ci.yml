@@ -1,0 +1,18 @@
+image: docker
+
+services:
+  - docker:dind
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: clone
+  only:
+    - master
+  script:
+    - echo "Starting deploy6"
+    - sudo bash ./deploy.sh
+  tags: [develop]
